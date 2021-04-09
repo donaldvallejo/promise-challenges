@@ -22,7 +22,7 @@
 function snooze(action) {
     setTimeout(function() {
       action();
-    }, 2000);
+    }, 0);
 }
 console.log('Step 1');
 
@@ -33,3 +33,12 @@ snooze( function() {
 
 console.log('Step 3');
 
+// 1. order will be step 1, step 3, step 2. because steap 1 and 3 are out side of the scope of the functions so they will go off frist.
+
+// 2.
+// Step 1
+// Step 3
+// Step 2
+// Async Action completed via callback
+
+// 3. i expect no difference, but there being no delay.

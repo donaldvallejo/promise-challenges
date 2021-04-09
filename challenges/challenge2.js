@@ -35,6 +35,7 @@
   * Asynchronously returns a greeting for a specified name.
   * @param name The name of the person to greet.
   */
+
 function greet(name) {
     return new Promise(function(resolve, reject) {
       setTimeout(function() {
@@ -51,6 +52,7 @@ function greet(name) {
  * Returns the uppercased version of a string.
  * @param {*} str The string to uppercase.
  */
+
 function uppercaser(str) {
     return new Promise(function(resolve, reject) {
         setTimeout(function() {
@@ -63,8 +65,8 @@ function uppercaser(str) {
     });
 }
 
-name = 'Ducky'
-my_str = 'Make School is Awesome!!!'
+name = "Ducky"
+my_str = "eremahgerd its makeschoooo!!!"
 
 greet(name)
     .then((greetResult) => {
@@ -73,7 +75,32 @@ greet(name)
     })
     .then((uppercaserResult) => {
         console.log(uppercaserResult)
-    }).catch((err) => {
+        return spacer(uppercaserResult)
+    })
+    .then((spacerResult) => {
+      console.log(spacerResult)
+    })
+    .catch((err) => {
         console.log('Received an error!')
         console.log(err);
     });
+
+
+function spacer(str) {  
+  return new Promise(function(resolve, reject) {
+    setTimeout(function() {
+      if (typeof str === 'string') {
+        resolve(str.split("").join(" "))
+    } else {
+        reject('Argument to uppercaser must be string');
+    }
+}, 1000);
+});
+}
+    // 1. Hello there, Ducky. MAKE SCHOOL IS AWESOME!!
+
+    // 2. Received an error! Name must be a string!
+
+    // 3. change the value of my_str to a integer: Hello there, Ducky. Received an error! Argument to uppercaser must be string
+
+    // 4. solution above
