@@ -61,10 +61,23 @@ function uppercaser(str) {
     });
 }
 
+function spacer(str) {  
+  return new Promise(function(resolve, reject) {
+    setTimeout(function() {
+      if (typeof str === 'string') {
+        resolve(str.split("").join(" "))
+    } else {
+        reject('Argument to uppercaser must be string');
+    }
+}, 1000);
+});
+}
+
 async function greetAndUppercase(name) {
     greeting = await greet(name)
     uppercasedGreeting = await uppercaser(greeting)
-    return uppercasedGreeting
+    spacedGreeting = await spacer(uppercasedGreeting)
+    return spacedGreeting
 }
 
 /* Uncomment me! #1 */
@@ -72,10 +85,16 @@ async function greetAndUppercase(name) {
 // console.log(result)
 
 /* Uncomment me! #2 */
-// greetAndUppercase('Ducky')
-//     .then(function(result) {
-//         console.log(result)
-//     })
-//     .catch(function(err) {
-//         console.log(err)
-//     })
+greetAndUppercase('Ducky')
+    .then(function(result) {
+        console.log(result)
+    })
+    .catch(function(err) {
+        console.log(err)
+    })
+
+// 1. 
+
+// 2. returns whole object of promise: Promise { <pending> }
+
+// 3. returns the same value through both aysnc functionsd to get: "HELLO THERE, DUCKY"
